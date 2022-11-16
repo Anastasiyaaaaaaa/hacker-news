@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './style.css';
 import { useDispatch } from 'react-redux';
 import { setStoryPage } from '../../../redux/slices/storyPageSlice';
+import { fetchComments } from '../../../redux/thunks/storyPageThunks';
 
 export const Story = ({ story }) => {
 
@@ -9,6 +10,7 @@ export const Story = ({ story }) => {
 
     const handleClick = () => {
         dispatch(setStoryPage(story)); 
+        dispatch(fetchComments(story.kids)); 
     }
 
     return story && <div className='story' onClick={handleClick}>

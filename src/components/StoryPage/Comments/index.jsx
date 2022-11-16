@@ -1,11 +1,14 @@
+
 import { Comment } from './Comment';
 import './style.css';
 
-export const Comments = () => {
+export const Comments = ({ kids, comments }) => {
 
-    return <div className='comments'>
-        <button type='button'>Обновить</button>
-        <Comment />
-        <Comment />
+   
+    return comments && <div className='comments'> 
+        {comments.map((comment, index) => <Comment
+            key={comment.id}
+            comment={comment} 
+        />)}
     </div>
 }

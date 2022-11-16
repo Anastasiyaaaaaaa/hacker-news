@@ -1,8 +1,10 @@
 import './style.css';
+import HTMLReactParser from 'html-react-parser';
 
-export const Comment = () => {
+export const Comment = ({comment}) => {
 
     return <div className='comment'>
-        Comment
+        <p>by: {comment.by}</p>
+        <p>{HTMLReactParser(comment.text)}</p>  
     </div>
 }
