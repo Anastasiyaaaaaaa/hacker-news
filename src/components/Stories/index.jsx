@@ -5,8 +5,8 @@ export const Stories = () => {
 
     return <div className='stories'>
         <button type='button'>Обновить</button>
-        <Story />
-        <Story />
-        <Story />
+        <Story story={{id: 1}}/>
+        <Story story={{id: 2}}/>
+        <Story story={{id: 3}}/>
     </div>
 }

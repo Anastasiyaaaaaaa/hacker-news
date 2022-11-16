@@ -1,8 +1,11 @@
-import './style.css'; 
+import { Link } from 'react-router-dom';
+import './style.css';
 
-export const Story = () => { 
+export const Story = ({ story }) => {
 
     return <div className='story'>
-        Story
+        <Link to={`storyPage_${story.id}`}>
+            Story {story.id}
+        </Link>
     </div>
 }
