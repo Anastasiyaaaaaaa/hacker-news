@@ -4,11 +4,12 @@ import './style.css';
 
 export const Comments = ({ kids, comments }) => {
 
-   
-    return comments && <div className='comments'> 
+    console.log('comments', comments)
+    return comments && <div className='comments'>
         {comments.map((comment, index) => <Comment
             key={comment.id}
-            comment={comment} 
+            index={index}
+            comment={comment}
         />)}
     </div>
 }

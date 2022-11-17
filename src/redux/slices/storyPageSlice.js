@@ -19,11 +19,15 @@ export const storyPageSlice = createSlice({
         },
         setComments: (state, action) => {
             state.storyComments = action.payload;
+        },
+        setCommentTree: (state, action) => {
+            const index = action.payload.index;
+            state.storyComments[index].storyCommentTree = action.payload.storyCommentTree;
             console.log(current(state))
         },
     },
 });
 
-export const { setStoryPage, setComments } = storyPageSlice.actions
+export const { setStoryPage, setComments, setCommentTree } = storyPageSlice.actions
 
 export default storyPageSlice.reducer //storyPageReducer

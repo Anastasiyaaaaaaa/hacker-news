@@ -10,7 +10,7 @@ export const Story = ({ story }) => {
 
     const handleClick = () => {
         dispatch(setStoryPage(story)); 
-        dispatch(fetchComments(story.kids)); 
+        story.kids && dispatch(fetchComments(story.kids)); 
     }
 
     return story && <div className='story' onClick={handleClick}>
