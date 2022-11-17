@@ -31,9 +31,11 @@ export const Stories = () => {
 
     return isLoaded ?
         <div className='stories'>
-            <PageHeader title="Новости"/>
+            <PageHeader title="Новости" />
             <Button onClick={handleUpdate}>Обновить</Button>
-            {newStories.map(newStory => <Story key={newStory.id} story={newStory} />)}
+            {newStories.map(newStory => <Story
+                key={newStory.id}
+                story={newStory} />)}
         </div>
         :
         <div><Spin /></div>

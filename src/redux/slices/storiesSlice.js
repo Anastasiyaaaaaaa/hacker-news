@@ -12,9 +12,9 @@ export const storiesSlice = createSlice({
     reducers: {
         setStories: (state, action) => {
             const newStories = action.payload.newStories;
-            state.isLoaded = true;
             state.newStories = newStories;
             state.newStoriesIds = action.payload.newStoriesIds;
+            state.isLoaded = true;
         },
     }
 })
