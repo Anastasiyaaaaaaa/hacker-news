@@ -5,7 +5,9 @@ import { Comments } from './Comments';
 import { useDispatch } from 'react-redux';
 import { fetchComments } from '../../redux/thunks/storyPageThunks';
 import { getFormattedTime } from '../../utils/formattedTime';
-
+import { Button, Card } from 'antd';
+import { MessageOutlined, StarOutlined } from '@ant-design/icons';
+import { useLayoutEffect } from 'react';
 export const StoryPage = () => {
 
     const storyPage = useSelector((state) => state.storyPage.storyPage);
@@ -16,21 +18,30 @@ export const StoryPage = () => {
     const handleUpdComments = () => {
         dispatch(fetchComments(storyPage.kids));
     }
- 
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0); //чтобы не прокручивалось вниз, когда много комментов 
+      }, []);
+
     return <div className='story-page'>
-        <Link to="/stories">Назад</Link>
-        <div className='story-title'>{storyPage.title}</div>
-        <div className='story-by'>by {storyPage.by}</div>
-        <div><a href={storyPage.url} target='blank'>ссылка</a></div>
-        <div className='story-bottom'> 
-        <div>time: {getFormattedTime(storyPage.time)}</div>
-            <span>score {storyPage.score}</span>
-        <div>descendants: {storyPage.descendants}</div>
-        </div>
-        {storyPage.kids && <>
-            <button type='button' onClick={handleUpdComments}>Обновить</button>
-            <Comments comments={storyComments} />
-        </>
-        }
+        <Button><Link to="/stories">Назад</Link></Button>
+        <Card title={storyPage.title}>
+
+            <div className='story-by'>Автор: {storyPage.by}</div>
+
+            <div><a href={storyPage.url} target='blank'>Ссылка на источник</a></div>
+            <div className='story-bottom'>
+                <div>{getFormattedTime(storyPage.time)}</div>
+                <span><StarOutlined /> {storyPage.score}</span>
+                <div><MessageOutlined /> {storyComments.length}</div>
+            </div>
+            {storyPage.kids && <>
+            <div>Комментарии</div>
+            
+                <Button onClick={handleUpdComments}>Обновить</Button>
+                <Comments comments={storyComments} />
+            </>
+            }
+        </Card>
     </div>
 }

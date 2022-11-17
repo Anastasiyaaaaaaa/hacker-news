@@ -3,7 +3,12 @@ import { setComments, setCommentTree } from "../slices/storyPageSlice";
 
 export const fetchComments = (ids) => async dispatch => {
     const comments = await Promise.all(ids.map(baseRequest));
-    dispatch(setComments(comments))
+    const exsistComments = [];
+    comments.forEach(comment => {
+        if (!comment.deleted && !comment.dead)
+            exsistComments.push(comment)
+    })
+    dispatch(setComments(exsistComments))
 }
 
 export const fetchAllKids = (ids, index) => async dispatch => {

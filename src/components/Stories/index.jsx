@@ -3,6 +3,7 @@ import './style.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchStories } from '../../redux/thunks/storiesThunks';
+import { Button, Spin } from 'antd';
 
 export const Stories = () => {
 
@@ -30,9 +31,9 @@ export const Stories = () => {
 
     return isLoaded ?
         <div className='stories'>
-            <button type='button' onClick={handleUpdate}>Обновить</button>
+            <Button onClick={handleUpdate}>Обновить</Button> 
             {newStories.map(newStory => <Story key={newStory.id} story={newStory} />)}
         </div>
         :
-        <div>Загрузка...</div>
+        <div><Spin /></div>
 }

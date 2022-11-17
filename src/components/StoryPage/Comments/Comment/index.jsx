@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { CommentsTree } from './CommentsTree';
 import { getFormattedTime } from '../../../../utils/formattedTime';
-
+import { Button, Comment as CommentAntd } from 'antd'
 export const Comment = ({ comment, index }) => {
 
     const dispatch = useDispatch()
@@ -17,15 +17,16 @@ export const Comment = ({ comment, index }) => {
         setWatchAll(!watchAll);
     }
 
-    return <div className='comment'>
-        {/*  <p>id: {comment.id} </p>  */}
-        <p>by: {comment.by}</p>
-        <p>{comment.text && HTMLReactParser(comment.text)}</p>
-        <p>{getFormattedTime(comment.time)}</p>
+    return  <div className='comment'>
+       
+        <CommentAntd
+            author={comment.by}
+            content={comment.text && HTMLReactParser(comment.text)}
+            datetime={getFormattedTime(comment.time)}
+        ></CommentAntd>
         {comment.kids &&
-            <button type='button' onClick={handleClick}>
-                {watchAll ? 'Скрыть' : 'Посмотреть'} все
-            </button>}
+            <Button onClick={handleClick} type="primary"> {watchAll ? 'Скрыть' : 'Посмотреть'} все</Button>}
+
         {watchAll && <CommentsTree storyCommentTree={comment.storyCommentTree} index={index} />}
     </div>
 }

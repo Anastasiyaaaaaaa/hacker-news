@@ -2,16 +2,20 @@
 import { getFormattedTime } from '../../../../../utils/formattedTime';
 import { CommentsTree } from '../CommentsTree';
 import './style.css';
+import { Comment as CommentAntd } from 'antd'
+import HTMLReactParser from 'html-react-parser';
 
 export const Child = ({ comment  }) => { 
     
     /** добавить проверку на то, что коммент не удален */
     return <div className='child'>
-        {/*  <p>id: {comment.id} </p>
-        <p> parent: {comment.parent}</p>  */}
-        <p>by: {comment.by}</p>
-        <p>{comment.text}</p>
-        <p>time {getFormattedTime(comment.time)}</p>
+        
+        <CommentAntd
+            author={comment.by}
+            content={comment.text && HTMLReactParser(comment.text)}
+            datetime={getFormattedTime(comment.time)}
+        ></CommentAntd>
+
         <CommentsTree
             storyCommentTree={comment.storyCommentTree}
         />

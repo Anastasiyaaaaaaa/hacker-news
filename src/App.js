@@ -9,18 +9,23 @@ export const App = () => {
   return (
     <Router>
       <div className="app">
-        <Header />
-        <Switch>
-          <Route path="/stories">
-            <Stories />
-          </Route>
-          <Route path="/storyPage_:id">
-            <StoryPage />
-          </Route>
-          <Route path="/">
-            <MainPage />
-          </Route>
-        </Switch>
+        <div className="app-container">
+          <Header />
+          <div className="app-content">
+
+          <Switch>
+            <Route path="/stories">
+              <Stories />
+            </Route>
+            <Route path="/storyPage_:id">
+              <StoryPage />
+            </Route>
+            <Route path="/">
+              <MainPage />
+            </Route>
+          </Switch>
+          </div>
+        </div>
       </div>
     </Router>
   );

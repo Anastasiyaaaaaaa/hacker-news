@@ -2,10 +2,7 @@ import { createSlice, current } from "@reduxjs/toolkit"
 
 const initialState = {
     storyPage: {},
-    storyComments: [{
-        comment: {},
-        storyCommentTree: []
-    }]
+    storyComments: []
 
 }
 
@@ -19,11 +16,12 @@ export const storyPageSlice = createSlice({
         },
         setComments: (state, action) => {
             state.storyComments = action.payload;
+
         },
         setCommentTree: (state, action) => {
             const index = action.payload.index;
             state.storyComments[index].storyCommentTree = action.payload.storyCommentTree;
-            /* console.log(current(state)) */
+
         },
     },
 });
