@@ -1,4 +1,5 @@
 
+import { getFormattedTime } from '../../../../../utils/formattedTime';
 import { CommentsTree } from '../CommentsTree';
 import './style.css';
 
@@ -10,6 +11,7 @@ export const Child = ({ comment  }) => {
         <p> parent: {comment.parent}</p>  */}
         <p>by: {comment.by}</p>
         <p>{comment.text}</p>
+        <p>time {getFormattedTime(comment.time)}</p>
         <CommentsTree
             storyCommentTree={comment.storyCommentTree}
         />

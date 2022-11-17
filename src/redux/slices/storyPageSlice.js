@@ -23,7 +23,7 @@ export const storyPageSlice = createSlice({
         setCommentTree: (state, action) => {
             const index = action.payload.index;
             state.storyComments[index].storyCommentTree = action.payload.storyCommentTree;
-            console.log(current(state))
+            /* console.log(current(state)) */
         },
     },
 });

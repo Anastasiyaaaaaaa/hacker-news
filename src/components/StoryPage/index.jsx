@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Comments } from './Comments';
 import { useDispatch } from 'react-redux';
 import { fetchComments } from '../../redux/thunks/storyPageThunks';
+import { getFormattedTime } from '../../utils/formattedTime';
 
 export const StoryPage = () => {
 
@@ -22,7 +23,7 @@ export const StoryPage = () => {
         <div className='story-by'>by {storyPage.by}</div>
         <div><a href={storyPage.url} target='blank'>ссылка</a></div>
         <div className='story-bottom'> 
-        <div>time: {storyPage.time}</div>
+        <div>time: {getFormattedTime(storyPage.time)}</div>
             <span>score {storyPage.score}</span>
         <div>descendants: {storyPage.descendants}</div>
         </div>
