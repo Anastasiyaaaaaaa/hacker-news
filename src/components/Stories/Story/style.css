@@ -1,12 +1,9 @@
  .story {
      margin: 30px 0;
-     /* border-bottom: 1px solid rgb(187, 187, 187); */
+     padding: 20px;
  }
- /*
-.story:hover {
-    background-color: rgb(244, 244, 244);
-}
-
-.story span {
-    margin-right: 30px;
-} */
+ 
+ .story:hover {
+     transition: all 1s;
+     background-color: rgb(246, 246, 246);
+ }

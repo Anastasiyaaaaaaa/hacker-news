@@ -11,8 +11,7 @@ export const App = () => {
       <div className="app">
         <div className="app-container">
           <Header />
-          <div className="app-content">
-
+          <div className="app-content"> 
           <Switch>
             <Route path="/stories">
               <Stories />
