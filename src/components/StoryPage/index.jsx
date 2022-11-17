@@ -21,7 +21,7 @@ export const StoryPage = () => {
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0); //чтобы не прокручивалось вниз, когда много комментов 
-      }, []); 
+    }, []);
 
     return <div className='story-page'>
         <Button><Link to="/stories">Назад</Link></Button>
@@ -35,12 +35,11 @@ export const StoryPage = () => {
                 <span><StarOutlined /> {storyPage.score}</span>
                 <div><MessageOutlined /> {storyPage.kids ? storyPage.kids.length : 0}</div>
             </div>
-            {storyPage.kids && <>
-            <div>Комментарии</div>
-            
-                <Button onClick={handleUpdComments}>Обновить</Button>
+            <Button onClick={handleUpdComments}>Обновить комментарии</Button>
+            {storyPage.kids && <div className='story-page-comments'>
+                <div className='story-page-comments-header'>Комментарии</div> 
                 <Comments comments={storyComments} />
-            </>
+            </div>
             }
         </Card>
     </div>

@@ -1,1 +1,9 @@
 .story-page {}
+
+.story-page-comments {
+    margin: 40px 0;
+}
+
+.story-page-comments-header {
+    font-weight: 700;
+}
