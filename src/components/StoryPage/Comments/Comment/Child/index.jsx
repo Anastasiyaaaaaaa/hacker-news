@@ -5,10 +5,10 @@ import './style.css';
 import { Comment as CommentAntd } from 'antd'
 import HTMLReactParser from 'html-react-parser';
 
-export const Child = ({ comment  }) => { 
+export const ChildComment = ({ comment  }) => { 
     
     /** добавить проверку на то, что коммент не удален */
-    return <div className='child'>
+    return <div className='child-comment'>
         
         <CommentAntd
             author={comment.by}

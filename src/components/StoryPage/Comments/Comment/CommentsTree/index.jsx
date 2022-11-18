@@ -1,13 +1,13 @@
 
 
-import { Child } from '../Child';
+import { ChildComment } from '../ChildComment';
 import './style.css';
 
 export const CommentsTree = ({ storyCommentTree }) => { 
 
     return <div className='comments-tree'>
         {storyCommentTree && storyCommentTree.map((comment) => {
-            return <Child
+            return <ChildComment
                 key={comment.id}
                 comment={comment}
             />
