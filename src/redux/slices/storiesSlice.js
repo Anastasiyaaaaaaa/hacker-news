@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, current } from "@reduxjs/toolkit"
 
 const initialState = {
     newStoriesIds: [],
@@ -11,14 +11,13 @@ export const storiesSlice = createSlice({
     initialState,
     reducers: {
         setStories: (state, action) => {
-            const newStories = action.payload.newStories;
-            state.newStories = newStories;
-            state.newStoriesIds = action.payload.newStoriesIds;
+            state.newStoriesIds = action.payload.updStoriesIds;
+            state.newStories = action.payload.updStories;
             state.isLoaded = true;
         },
     }
 })
 
-export const { setStories } = storiesSlice.actions
+export const { setStories, setStoriesIds } = storiesSlice.actions
 
 export default storiesSlice.reducer //storiesReducer
