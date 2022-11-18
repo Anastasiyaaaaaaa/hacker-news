@@ -6,8 +6,7 @@ import { Comment as CommentAntd } from 'antd'
 import HTMLReactParser from 'html-react-parser';
 
 export const ChildComment = ({ comment  }) => { 
-    
-    /** добавить проверку на то, что коммент не удален */
+     
     return <div className='child-comment'>
         
         <CommentAntd
