@@ -5,9 +5,12 @@ import { setComments, setCommentTree } from "../slices/storyPageSlice";
 
 export const fetchComments = (ids) => async dispatch => {
 
-    const comments = await Promise.all(ids.map(baseRequest));
-    const exsistComments = existenceCheck(comments);
-    dispatch(setComments(exsistComments))
+    if (ids) {
+        const comments = await Promise.all(ids.map(baseRequest));
+        const exsistComments = existenceCheck(comments);
+        dispatch(setComments(exsistComments))
+    } else
+        dispatch(setComments([]))
 }
 
 export const fetchAllKids = (ids, index) => async dispatch => {

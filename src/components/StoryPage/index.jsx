@@ -5,9 +5,9 @@ import { Comments } from './Comments';
 import { useDispatch } from 'react-redux';
 import { fetchComments } from '../../redux/thunks/storyPageThunks';
 import { getFormattedTime } from '../../utils/formattedTime';
-import { Button, Card, Spin } from 'antd';
+import { Button, Card, Empty, Spin } from 'antd';
 import { MessageOutlined, StarOutlined } from '@ant-design/icons';
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 export const StoryPage = () => {
 
     const storyPage = useSelector((state) => state.storyPage.storyPage);
@@ -18,14 +18,18 @@ export const StoryPage = () => {
 
     const handleUpdComments = () => {
         dispatch(fetchComments(storyPage.kids));
-    }
+    } 
 
+    const handleReset = () => {
+        dispatch(fetchComments([]));
+    } 
+    
     useLayoutEffect(() => {
-        window.scrollTo(0, 0); //чтобы не прокручивалось вниз, когда много комментов 
+        window.scrollTo(0, 0); //чтобы не прокручивалось вниз, когда много комментов  
     }, []);
 
     return <div className='story-page'>
-        <Button><Link to="/stories">Назад</Link></Button>
+        <Button onClick={handleReset}><Link to="/stories">Назад</Link></Button>
         <Card title={<a href={storyPage.url} target='blank'>{storyPage.title}</a>}>
 
             <div className='story-by'>Автор: {storyPage.by}</div>
@@ -36,13 +40,14 @@ export const StoryPage = () => {
                 <span><StarOutlined /> {storyPage.score}</span>
                 <div><MessageOutlined /> {storyPage.kids ? storyPage.kids.length : 0}</div>
             </div>
-            
+
             <Button onClick={handleUpdComments}>Обновить комментарии</Button>
-            {!commentsisLoaded && <div><Spin /></div>}
-            {storyPage.kids && <div className='story-page-comments'>
-                <div className='story-page-comments-header'>Комментарии</div> 
+            {!commentsisLoaded && storyPage.kids && <div><Spin /></div>}
+            { (storyPage.kids) ? <div className='story-page-comments'>
+                <div className='story-page-comments-header'>Комментарии</div>
                 <Comments comments={storyComments} />
-            </div>
+            </div> :
+            <Empty />
             }
         </Card>
     </div>

@@ -35,7 +35,7 @@ export const Stories = () => {
             <PageHeader title="Новости" />
             <Button onClick={handleUpdate}>Обновить</Button> 
                 <>
-                    {newStories.map(newStory => <Story
+                    {newStories && newStories.map(newStory => <Story
                         key={newStory.id}
                         story={newStory} />)}
                 </>

@@ -14,7 +14,7 @@ export const Story = ({ story }) => {
 
     const handleClick = () => {
         dispatch(setStoryPage(story));
-        story.kids && dispatch(fetchComments(story.kids));
+        if (story.kids) dispatch(fetchComments(story.kids))
     }
 
 

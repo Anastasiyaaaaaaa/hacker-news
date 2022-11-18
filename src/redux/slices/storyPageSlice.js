@@ -16,13 +16,14 @@ export const storyPageSlice = createSlice({
             state.storyPage = storyPage;
         },
         setComments: (state, action) => {
-            state.storyComments = action.payload;
-            state.commentsisLoaded = true;
+            const storyComments = action.payload;
+            state.storyComments = storyComments;
+            state.commentsisLoaded = storyComments.length > 0 ? true : false;
+            // console.log(current(state))
         },
         setCommentTree: (state, action) => {
             const index = action.payload.index;
             state.storyComments[index].storyCommentTree = action.payload.storyCommentTree;
-            console.log(current(state))
         },
     },
 });

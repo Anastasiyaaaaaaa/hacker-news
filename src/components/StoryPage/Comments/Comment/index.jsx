@@ -14,11 +14,11 @@ export const Comment = ({ comment, index }) => {
     const [watchAll, setWatchAll] = useState(false);
 
     const handleClick = () => {
-        !watchAll && dispatch(fetchAllKids(comment.kids, index));
+        !watchAll && comment.kids && dispatch(fetchAllKids(comment.kids, index));
         setWatchAll(!watchAll);
     }
 
-    return  <div className='comment'> 
+    return <div className='comment'>
         <CommentAntd
             author={comment.by}
             content={comment.text && HTMLReactParser(comment.text)}
