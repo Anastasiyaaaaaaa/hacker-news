@@ -18,8 +18,7 @@ export const Comment = ({ comment, index }) => {
         setWatchAll(!watchAll);
     }
 
-    return  <div className='comment'>
-       
+    return  <div className='comment'> 
         <CommentAntd
             author={comment.by}
             content={comment.text && HTMLReactParser(comment.text)}

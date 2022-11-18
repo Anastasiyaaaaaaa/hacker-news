@@ -13,6 +13,7 @@ export const fetchComments = (ids) => async dispatch => {
 export const fetchAllKids = (ids, index) => async dispatch => {
 
     const kids = await Promise.all(ids.map(baseRequest));
-    const allExsistKids = await getAllKids(kids);
+    const exsistKids = existenceCheck(kids);
+    const allExsistKids = await getAllKids(exsistKids);
     dispatch(setCommentTree({ index: index, storyCommentTree: allExsistKids })); /** диспатчим после получения всех детей */
 }
