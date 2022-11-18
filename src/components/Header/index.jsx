@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import './style.css';
 
 export const Header = () => {
+    const MenuItems = [
+        { label: <Link to="/">Главная</Link>, key: 'main-page' },
+        { label: <Link to="/stories">Новости</Link>, key: 'stories' }
+    ];
     return <header className='header'>
-        <Menu mode="horizontal">
-            <Menu.Item><Link to="/">Главная</Link></Menu.Item>
-            <Menu.Item><Link to="/stories">Новости</Link></Menu.Item>
-        </Menu> 
+        <Menu mode="horizontal" items={MenuItems} />
     </header>
 }

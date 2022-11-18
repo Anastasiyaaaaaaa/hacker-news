@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchStories } from '../../redux/thunks/storiesThunks';
 import { Button, PageHeader, Spin } from 'antd';
+import { CSSTransition } from 'react-transition-group';
 
 export const Stories = () => {
 
@@ -22,7 +23,7 @@ export const Stories = () => {
 
         const interval = setInterval(() => {
             handleUpdate();
-            console.log('Автоматический запрос на сервер (раз в минуту)');
+            /* console.log('Автоматический запрос на сервер (раз в минуту)'); */
         }, 60000);
         return () => clearInterval(interval);
     }, []);
@@ -31,11 +32,11 @@ export const Stories = () => {
 
     return isLoaded ?
         <div className='stories'>
-            <PageHeader title="Новости" />
-            <Button onClick={handleUpdate}>Обновить</Button>
-            {newStories.map(newStory => <Story
-                key={newStory.id}
-                story={newStory} />)}
+                <PageHeader title="Новости" />
+                <Button onClick={handleUpdate}>Обновить</Button> 
+                {newStories.map(newStory => <Story
+                    key={newStory.id}
+                    story={newStory} />)} 
         </div>
         :
         <div><Spin /></div>
