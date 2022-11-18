@@ -5,13 +5,14 @@ import { Comments } from './Comments';
 import { useDispatch } from 'react-redux';
 import { fetchComments } from '../../redux/thunks/storyPageThunks';
 import { getFormattedTime } from '../../utils/formattedTime';
-import { Button, Card } from 'antd';
+import { Button, Card, Spin } from 'antd';
 import { MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { useLayoutEffect } from 'react';
 export const StoryPage = () => {
 
     const storyPage = useSelector((state) => state.storyPage.storyPage);
     const storyComments = useSelector((state) => state.storyPage.storyComments);
+    const commentsisLoaded = useSelector((state) => state.storyPage.commentsisLoaded);
 
     const dispatch = useDispatch();
 
@@ -35,7 +36,9 @@ export const StoryPage = () => {
                 <span><StarOutlined /> {storyPage.score}</span>
                 <div><MessageOutlined /> {storyPage.kids ? storyPage.kids.length : 0}</div>
             </div>
+            
             <Button onClick={handleUpdComments}>Обновить комментарии</Button>
+            {!commentsisLoaded && <div><Spin /></div>}
             {storyPage.kids && <div className='story-page-comments'>
                 <div className='story-page-comments-header'>Комментарии</div> 
                 <Comments comments={storyComments} />

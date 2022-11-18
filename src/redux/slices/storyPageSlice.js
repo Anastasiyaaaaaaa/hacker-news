@@ -2,7 +2,8 @@ import { createSlice, current } from "@reduxjs/toolkit"
 
 const initialState = {
     storyPage: {},
-    storyComments: []
+    storyComments: [],
+    commentsisLoaded: false
 
 }
 
@@ -16,7 +17,7 @@ export const storyPageSlice = createSlice({
         },
         setComments: (state, action) => {
             state.storyComments = action.payload;
-
+            state.commentsisLoaded = true;
         },
         setCommentTree: (state, action) => {
             const index = action.payload.index;
