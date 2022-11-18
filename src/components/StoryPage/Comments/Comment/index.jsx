@@ -3,7 +3,7 @@ import HTMLReactParser from 'html-react-parser';
 import { fetchAllKids } from '../../../../redux/thunks/storyPageThunks';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { CommentsTree } from './CommentsTree';
+import { CommentTree } from './CommentTree';
 import { getFormattedTime } from '../../../../utils/formattedTime';
 import { Button, Comment as CommentAntd } from 'antd'
 
@@ -27,6 +27,6 @@ export const Comment = ({ comment, index }) => {
         {comment.kids &&
             <Button onClick={handleClick} type="primary"> {watchAll ? 'Скрыть' : 'Посмотреть'} все</Button>}
 
-        {watchAll && <CommentsTree storyCommentTree={comment.storyCommentTree} index={index} />}
+        {watchAll && <CommentTree storyCommentTree={comment.storyCommentTree} index={index} />}
     </div>
 }

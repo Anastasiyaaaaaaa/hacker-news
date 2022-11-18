@@ -1,6 +1,6 @@
 
 import { getFormattedTime } from '../../../../../utils/formattedTime';
-import { CommentsTree } from '../CommentsTree';
+import { CommentTree } from '../CommentTree';
 import './style.css';
 import { Comment as CommentAntd } from 'antd'
 import HTMLReactParser from 'html-react-parser';
@@ -15,7 +15,7 @@ export const ChildComment = ({ comment  }) => {
             datetime={getFormattedTime(comment.time)}
         ></CommentAntd>
 
-        <CommentsTree
+        <CommentTree
             storyCommentTree={comment.storyCommentTree}
         />
     </div>

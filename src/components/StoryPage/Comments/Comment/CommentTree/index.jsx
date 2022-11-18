@@ -4,7 +4,7 @@
 import { ChildComment } from '../ChildComment';
 import './style.css';
 
-export const CommentsTree = ({ storyCommentTree }) => { 
+export const CommentTree = ({ storyCommentTree }) => { 
 
     return <div className='comments-tree'>
         {storyCommentTree && storyCommentTree.map((comment) => {

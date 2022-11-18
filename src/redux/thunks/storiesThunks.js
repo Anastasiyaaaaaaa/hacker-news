@@ -1,5 +1,5 @@
 import { baseRequest, storiesIdsRequest } from "../requests";
-import { setStories, setStoriesIds } from "../slices/storiesSlice";
+import { setStories } from "../slices/storiesSlice";
 
 export const fetchStories = (oldIds, oldStories) => async dispatch => {
     const storiesIds = await storiesIdsRequest(); /* получаем 500 id`s историй */
